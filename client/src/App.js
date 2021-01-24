@@ -9,6 +9,7 @@ function App() {
   const [noteName, setNoteName] = useState('');
   const [description, setDescription] = useState('');
   const [noteList, setNoteList] = useState([]);
+  const [newNoteDescription, setNewNoteDescriptiuon] = useState('');
 
   useEffect(() => {
     Axios.get("http://localhost:3005/read").then((response) => {
@@ -21,17 +22,31 @@ function App() {
       noteName: noteName,
       description: description
     });
-  }
+  };
+
+  const deleteNote = (id) => {
+    Axios.delete('http://localhost:3005/delete/${id}');
+  };
+
+  const updateNote = (id) => {
+    Axios.put("http://localhost:3005/update", {
+      id: id,
+      newNoteDescription: newNoteDescription,
+    });
+  };
+
+
 
   return (
   <div className="App">
-    <h1>My Notes</h1>
+    <h1>Manas piezimes</h1>
 
       <label>Piezime:</label>
       <input 
         type="text" 
         onChange={(event) =>{
-          setNoteName(event.target.value)}}
+          setNoteName(event.target.value);
+        }}
       />
       <label>Teksts</label>
       <input 
@@ -47,7 +62,16 @@ function App() {
         return( 
           <div key={key}>
             <h1>{val.noteName}</h1>
-            <h1>{val.description}</h1> 
+            <h1>{val.description}</h1>
+            <input 
+              type="text" 
+              placeholder="Labot ierakstu"
+              onChange={(event) =>{
+                setNewNoteDescriptiuon(event.target.value);
+              }}
+            />
+            <button onClick={() => updateNote(val._id)}>Atjaunot</button>
+            <button onClick={() => deleteNote(val._id)}>Dzest</button> 
           </div>
         );
       })};

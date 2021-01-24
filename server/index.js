@@ -23,6 +23,30 @@ app.get('/read', async (req, res) => {
     });
 });
 
+app.delete('/delete/:id', async (req, res) => {
+    const id = req.params.id;
+    await NoteModel.findByIdAndRemove(id).exec();
+    res.send('Dzests')
+});
+
+
+app.put('/update', async (req, res) => {
+    const newNoteName = req.body.newNoteName;
+    const newDescription = req.body.newDescription;
+    const id = req.body.id;
+
+    try {
+        await NoteModel.findById(id, (error, updatedNote) =>{
+            updatedNote.description = newDescription;
+            updatedNote.save();
+            res.send("Atjaunots");
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
 app.post('/insert', async (req, res) => {
     const noteName = req.body.noteName;
     const description = req.body.description;
@@ -38,10 +62,6 @@ app.post('/insert', async (req, res) => {
         console.log(error);
     }
 });
-
-
-
-
 
 app.listen(3005, ()=>{
     console.log("Server running on port 3005");
