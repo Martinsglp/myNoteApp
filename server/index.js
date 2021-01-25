@@ -8,8 +8,6 @@ const NoteModel = require('./models/Note')
 app.use(express.json());
 app.use(cors());
 
-//const myURL = "mongodb+srv://martinsglp:martinsglp12345@cluster0.5fgvd.mongodb.net/myNotes?retryWrites=true&w=majority";
-
 mongoose.connect("mongodb+srv://martinsglp:martinsglp12345@cluster0.5fgvd.mongodb.net/myNoteApp?retryWrites=true&w=majority", {
     useNewUrlParser: true, 
 });
@@ -31,7 +29,6 @@ app.delete('/delete/:id', async (req, res) => {
 
 
 app.put('/update', async (req, res) => {
-    const newNoteName = req.body.newNoteName;
     const newDescription = req.body.newDescription;
     const id = req.body.id;
 
