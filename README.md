@@ -1,6 +1,28 @@
 Greetings! Im Martins University of Ventspils 3rd year student.
 This is my note application.
 
+List of used technologies
+
+React (front-end)
+Node.js / express (back-end)
+MongoDB (data storing)
+
+Set up
+
+Used command to make project base (npx create-react-app my-app)
+
+To start project 
+
+npm start
+
+To add Express npm install express --save
+
+For mongoDB - download and install ( i was using MongoDB compass)
+
+To add axios 
+
+npm install axios
+
 
 
 
