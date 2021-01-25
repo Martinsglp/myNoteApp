@@ -4,6 +4,11 @@ import './App.css';
 import Header from './Components/Header';
 import Note from './Components/Note';
 
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import NotFoundPage from './Pages/404';
+import AboutPage from './Pages/About';
+
+
 
 
 function App() {
