@@ -8,6 +8,7 @@ const NoteModel = require('./models/Note')
 app.use(express.json());
 app.use(cors());
 
+//connection to database
 mongoose.connect("mongodb+srv://martinsglp:martinsglp12345@cluster0.5fgvd.mongodb.net/myNoteApp?retryWrites=true&w=majority", {
     useNewUrlParser: true, 
 });

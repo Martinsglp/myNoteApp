@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Define note, what will it include
 const NoteSchema = new mongoose.Schema({
     noteName:{
         type: String,
